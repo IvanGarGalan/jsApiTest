@@ -1,6 +1,7 @@
 let btnTranslate = document.getElementById('btnTranslate')
 let textTranslate = document.getElementById('textTranslate')
 let text = document.getElementById('text')
+let listWords = document.getElementById('listWords')
 
 const traducirTexto = async (wordToTranslate) =>{
     try {
@@ -27,22 +28,31 @@ const traducirTexto = async (wordToTranslate) =>{
 }
 
 
-
 const cargarChiste = async (wordSearch) =>{
     try {
-        const response = await fetch(`https://dad-jokes7.p.rapidapi.com/dad-jokes/search?text=${wordSearch}`, options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': 'b30d4270e1msh380f183148f4235p16466cjsnd19a79f41908',
-                'X-RapidAPI-Host': 'dad-jokes7.p.rapidapi.com'
-            }
-        });
+        const response = await fetch(`https://icanhazdadjoke.com/search`,{
+       
+       method: 'GET',
+       headers: {
+           'Accept': 'application/json'
+       },
+       searchParams: {
+           term: wordSearch,
+           limit: 1
+       }
+})     
         const result = await response.json();
         //para cuando se acaben las pruebas
         if(response.status == 429){
             text.textContent = 'Se ha consumido la cuota diaria'
         }else{
-            mostrarResultado(result);
+            console.log(result.results[0].joke)
+            //Object made
+            myJoke = new Dadjoke();
+            myJoke.phrase = result.results[0].joke
+            //Show object
+            console.log(myJoke)
+            mostrarResultado(myJoke.phrase);
         }
     } catch (error) {
         console.log(error);
