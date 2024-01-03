@@ -3,6 +3,8 @@ let textTranslate = document.getElementById('textTranslate')
 let text = document.getElementById('text')
 let listWords = document.getElementById('listWords')
 
+let arrayWords = [];
+
 const traducirTexto = async (wordToTranslate) =>{
     try {
         const response = await fetch('https://text-translator2.p.rapidapi.com/translate', optionsText = {
@@ -21,6 +23,8 @@ const traducirTexto = async (wordToTranslate) =>{
 
         const result = await response.json();
         // console.log(result.data.translatedText);
+        localStorage.setItem('palabra',wordToTranslate)
+        cargarPalabrasTabla()
         cargarChiste(result.data.translatedText)
     } catch (error) {
         console.error(error);
@@ -70,6 +74,21 @@ const translateInput = () =>{
     traducirTexto(translation)
 }
 
+const cargarPalabrasTabla = () =>{
+    // puts the localStorage on a variable
+    let palabraCopiar = localStorage.getItem('palabra')
+    
+    //creates a list
 
+    const fragment = document.createDocumentFragment()
+    
+    let listElement = document.createElement('LI')
+    listElement.textContent = palabraCopiar
+    fragment.appendChild(listElement)
+    
+    //appends the list
+    listWords.appendChild(fragment)
+
+}
 
 btnTranslate.addEventListener("click",translateInput)
