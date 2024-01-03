@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(208, 212, 186, 0.673);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style:normal ;
+    max-width: 1080px;
+}
+
