@@ -32,7 +32,7 @@ const traducirTexto = async (wordToTranslate) =>{
 
 const cargarChiste = async (wordSearch) =>{
     try {
-        const response = await fetch(`https://icanhazdadjoke.com/search`,{
+        const response = await fetch(`https://icanhazdadjoke.com/search?term=${wordSearch}`,{
        
        method: 'GET',
        headers: {
