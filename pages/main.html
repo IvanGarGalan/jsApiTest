@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Dad Joke Simulator</title>
@@ -11,46 +12,43 @@
     <details>
         <summary>Menu</summary>
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li>Inicio</li>
+            <li>Servicios</li>
+            <li>Nosotros</li>
+            <li>Contacto</li>
         </ul>
     </details>
 
-    <header>
-        <p>hola</p>
-    </header>
-
-    <!--
         <header class="header">
-        <nav class="nav">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+        <nav class="header__nav">
+            <ul class="nav__ul">
+                <li><a href="#inicio" class="nav__a">Inicio</a></li>
+                <li><a href="#servicios" class="nav__a">Servicios</a></li>
+                <li><a href="#nosotros" class="nav__a">Nosotros</a></li>
+                <li><a href="#contacto" class="nav__a">Contacto</a></li>
             </ul>
         </nav>
         </header>
 
 
-    -->
-
     <main>
-        <p>Introduce una palabra en español y saldrá una broma en inglés</p>
-        <input type="text" name="" id="textTranslate">
-        <button id="btnTranslate">Translate</button>
+        <section class="main__section">
+            <p>Introduce una palabra en español y saldrá una broma en inglés</p>
+            <input type="text" name="" id="textTranslate" class="main__input" required>
+            <button id="btnTranslate" class="main__button">Translate</button>
+        </section>
+        
+        <section class="main__section">
+            <p id="text"></p>
+        </section>
+        
+        <article class="main__article">
+            <h1>Ultimas palabras buscadas</h1>
+            <ul id="listWords"></ul>
+        </article>
+
+
     </main>
-
-    <div>
-        <p id="text"></p>
-    </div>
-
-    <article>
-        <h1>Ultimas palabras buscadas</h1>
-        <ul id="listWords"></ul>
-    </article>
 
     <footer class="footer">
         <section class="footer__section">
