@@ -3,16 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Dad Joke Simulator</title>
 </head>
 <body>
-    <input type="text" name="" id="textTranslate">
-    <button id="btnTranslate">Translate</button>
-    <p id="text"></p>
+    <details>
+        <summary>Menu</summary>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </details>
 
-    <h1>Last searched words</h1>
-    <ul id="listWords"></ul>
+    <header>
+        <p>hola</p>
+    </header>
 
+    <!--
+        <header class="header">
+        <nav class="nav">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        </header>
+
+
+    -->
+
+    <main>
+        <p>Introduce una palabra en español y saldrá una broma en inglés</p>
+        <input type="text" name="" id="textTranslate">
+        <button id="btnTranslate">Translate</button>
+    </main>
+
+    <div>
+        <p id="text"></p>
+    </div>
+
+    <article>
+        <h1>Ultimas palabras buscadas</h1>
+        <ul id="listWords"></ul>
+    </article>
+
+    <footer class="footer">
+        <section class="footer__section">
+            <h3>Derechos de Autor</h3>
+            <ul class="section__ul">
+                <li>&copy; Dad Joke Simulator. Todos los derechos reservados.</li>
+                <li>Política de Privacidad</li>
+                <li>Términos y Condiciones</li>
+            </ul>
+        </section>
+        
+        <section class="footer__section">
+            <h3>Contacto</h3>
+            <ul class="section__ul">
+                <li>problemSolvin@dadjokes.com</li>
+                <li>+1234 4567 7890</li>
+            </ul>
+        </section>
+    </footer>
 
     <!-- Object script -->
     <script src="../js/dadjoke.js"></script>

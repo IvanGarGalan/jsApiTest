@@ -3,8 +3,6 @@ let textTranslate = document.getElementById('textTranslate')
 let text = document.getElementById('text')
 let listWords = document.getElementById('listWords')
 
-let arrayWords = [];
-
 const traducirTexto = async (wordToTranslate) =>{
     try {
         const response = await fetch('https://text-translator2.p.rapidapi.com/translate', optionsText = {
