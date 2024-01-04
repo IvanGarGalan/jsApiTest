@@ -3,7 +3,8 @@ let textTranslate = document.getElementById('textTranslate')
 let text = document.getElementById('text')
 let listWords = document.getElementById('listWords')
 
-const traducirTexto = async (wordToTranslate) =>{
+// function that translates the text
+const changeText = async (wordToTranslate) =>{
     try {
         const response = await fetch('https://text-translator2.p.rapidapi.com/translate', optionsText = {
     method: 'POST',
@@ -20,17 +21,19 @@ const traducirTexto = async (wordToTranslate) =>{
         });
 
         const result = await response.json();
-        // console.log(result.data.translatedText);
-        localStorage.setItem('palabra',wordToTranslate)
-        cargarPalabrasTabla()
-        cargarChiste(result.data.translatedText)
+        // the word gets stored into localstorage
+        localStorage.setItem('wordSpanish',wordToTranslate)
+        //the wordgets loaded in the table
+        loadWordsIntoTable()
+        //the joke loads
+        loadJoke(result.data.translatedText)
     } catch (error) {
         console.error(error);
     }
 }
 
-
-const cargarChiste = async (wordSearch) =>{
+//loads the joke using the word
+const loadJoke = async (wordSearch) =>{
     try {
         const response = await fetch(`https://icanhazdadjoke.com/search?term=${wordSearch}`,{
        
@@ -44,44 +47,44 @@ const cargarChiste = async (wordSearch) =>{
        }
 })     
         const result = await response.json();
-        //para cuando se acaben las pruebas
-        if(response.status == 429){
-            text.textContent = 'Se ha consumido la cuota diaria'
-        }else{
             console.log(result.results[0].joke)
             //Object made
             myJoke = new Dadjoke();
+            //setter
             myJoke.phrase = result.results[0].joke
             //Show object
             console.log(myJoke)
-            mostrarResultado(myJoke.phrase);
-        }
+            //getter
+            showResult(myJoke.phrase);
     } catch (error) {
         console.log(error);
     }
 
 }
 
-const mostrarResultado = (event) =>{
+//shows the result on screen
+const showResult = (event) =>{
     text.textContent = event
 }
 
+//gets the value of the input and the api calls begin
 const translateInput = () =>{
     let translation = textTranslate.value 
     // console.log(translation)
-    traducirTexto(translation)
+    changeText(translation)
 }
 
-const cargarPalabrasTabla = () =>{
+//the word gets loaded on the list
+const loadWordsIntoTable = () =>{
     // puts the localStorage on a variable
-    let palabraCopiar = localStorage.getItem('palabra')
+    let wordCopy = localStorage.getItem('wordSpanish')
     
-    //creates a list
+    //creates a li element
 
     const fragment = document.createDocumentFragment()
     
     let listElement = document.createElement('LI')
-    listElement.textContent = palabraCopiar
+    listElement.textContent = wordCopy
     fragment.appendChild(listElement)
     
     //appends the list
@@ -89,4 +92,5 @@ const cargarPalabrasTabla = () =>{
 
 }
 
+//listener
 btnTranslate.addEventListener("click",translateInput)
